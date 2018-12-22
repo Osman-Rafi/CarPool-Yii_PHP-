@@ -10,7 +10,20 @@ class m181112_150004_create_table_place_lang extends Migration
     /**
      * {@inheritdoc}
      */
-    public function safeUp()
+/*    public function safeUp()
+    {
+
+    }
+
+
+    public function safeDown()
+    {
+
+    }*/
+
+
+    // Use up()/down() to run migration code without a transaction.
+    public function up()
     {
         $this->createTable('place_lang', [
             'id' => $this->primaryKey()->unsigned(),
@@ -23,10 +36,11 @@ class m181112_150004_create_table_place_lang extends Migration
         $this->createIndex('idx_place_lang_place_id_place', 'place_lang', 'place_id');
 
         $this->addForeignKey('fk_place_lang_place_id_place', 'place_lang', 'place_id', 'place', 'id','restrict','cascade');
+
+
     }
 
-
-    public function safeDown()
+    public function down()
     {
         $this->dropForeignKey('fk_place_lang_place_id_place', 'place_lang');
 
@@ -35,18 +49,4 @@ class m181112_150004_create_table_place_lang extends Migration
         $this->dropTable('place_lang');
     }
 
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m181112_150004_create_table_place_lang cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }
