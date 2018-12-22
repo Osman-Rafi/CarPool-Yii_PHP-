@@ -23,12 +23,15 @@ class m181114_155046_create_phone_number_table extends Migration
             'created' => $this->timestamp()->notNull()
         ]);
 
-        $this->createIndex('idx_phone_number_user_id_country', 'phone_number', 'country_id');
-        $this->addForeignKey('fk_phone_number_country_id_country', 'phone_number', 'country_id', 'country', 'id', 'restrict', 'cascade');
+
 
 
         $this->createIndex('idx_phone_number_user_id_user', 'phone_number', 'user_id');
         $this->addForeignKey('fk_phone_number_user_id_user', 'phone_number', 'user_id', 'user', 'id', 'restrict', 'cascade');
+
+        $this->createIndex('idx_phone_number_country_id_country', 'phone_number', 'country_id');
+        $this->addForeignKey('fk_phone_number_country_id_country', 'phone_number', 'country_id', 'country', 'id', 'restrict', 'cascade');
+
     }
 
 
@@ -37,9 +40,15 @@ class m181114_155046_create_phone_number_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropForeignKey('fk_phone_number_user_id_country', 'phone_number');
-        $this->dropIndex('idx_phone_number_user_id_user_idx', 'phone_number');
+        $this->dropForeignKey('fk_phone_number_user_id_user', 'phone_number');
+        $this->dropIndex('idx_phone_number_user_id_user', 'phone_number');
 
+        $this->dropForeignKey('fk_phone_number_country_id_country', 'phone_number');
+        $this->dropIndex('idx_phone_number_country_id_country', 'phone_number');
+
+
+
+        
         $this->dropTable('phone_number');
     }
 }

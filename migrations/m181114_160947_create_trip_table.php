@@ -18,6 +18,7 @@ class m181114_160947_create_trip_table extends Migration
             'from' => $this->integer(10)->unsigned()->notNull(),
             'to' => $this->integer(10)->unsigned()->notNull(),
             'date' => $this->dateTime(),
+            'number_seats' => $this->integer(4)->notNull(),
             'duration' => $this->decimal(10, 1),
             'price' => $this->decimal(10, 2),
             'currency_id' => $this->integer(10)->notNull(),
@@ -52,6 +53,9 @@ class m181114_160947_create_trip_table extends Migration
 
         $this->dropForeignKey('fk_trip_from_place','trip');
         $this->dropIndex('idx_trip_from_place','trip');
+
+        $this->dropForeignKey('fk_trip_to_place','trip');
+        $this->dropIndex('idx_trip_to_place','trip');
 
         $this->dropForeignKey('fk_trip_id_currency_idx','trip');
         $this->dropIndex('idx_trip_id_currency_idx','trip');
