@@ -18,7 +18,7 @@ class m181113_163301_create_currency_table extends Migration
             'sign_format' => $this->string(45)->notNull()
         ]);
 
-        $this->batchInsert('currency',['code','sign_formate'],[
+        $this->batchInsert('currency',['code','sign_format'],[
             ['AUD' , 'A$ [price]'],
             ['BGN' , '[price] лв.'],
             ['BRL' , 'R$ [price]'],
@@ -38,7 +38,7 @@ class m181113_163301_create_currency_table extends Migration
             ['SEK' , 'skr [price]'],
             ['TRY' , '[price] TL'],
             ['USD' , '$ [price]'],
-            ['Taka', '৳ [price]'],
+            ['Taka', 'tk [price]'],
         ]);
     }
 

@@ -50,10 +50,9 @@ class m181114_154039_create_user_table extends Migration
          ]);
      }
 
-     /**
-      * {@inheritdoc}
-      */
-    public function safeDown()
+
+    
+   /* public function safeDown()
     {
         $this->dropTable('user');
     }*/
